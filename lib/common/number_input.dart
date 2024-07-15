@@ -2,8 +2,8 @@ import 'package:flutter/material.dart';
 
 class NumberInputField extends StatefulWidget {
   final String labelText;
-  final int initialValue;
-  final ValueChanged<int> onChanged;
+  final double initialValue;
+  final ValueChanged<double> onChanged;
 
   NumberInputField({
     required this.labelText,
@@ -16,7 +16,7 @@ class NumberInputField extends StatefulWidget {
 }
 
 class _NumberInputFieldState extends State<NumberInputField> {
-  late int value;
+  late double value;
 
   @override
   void initState() {
@@ -62,7 +62,7 @@ class _NumberInputFieldState extends State<NumberInputField> {
                     ),
                     onChanged: (newValue) {
                       setState(() {
-                        value = int.tryParse(newValue) ?? value;
+                        value = double.tryParse(newValue) ?? value;
                         widget.onChanged(value);
                       });
                     },

@@ -34,7 +34,7 @@ class PriceBox extends StatelessWidget {
           ),
           const SizedBox(height: 8.0),
           Text(
-            value.toString(),
+            "\$" + value.toStringAsFixed(2),
             style: const TextStyle(
               fontSize: 20.0,
               fontWeight: FontWeight.bold,

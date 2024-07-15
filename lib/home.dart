@@ -1,3 +1,4 @@
+import 'package:black_scholes_model/backend/black_scholas.dart';
 import 'package:black_scholes_model/backend/option_data.dart';
 import 'package:black_scholes_model/common/price_box.dart';
 import 'package:flutter/material.dart';
@@ -11,6 +12,8 @@ class Home extends StatefulWidget {
 }
 
 class _HomeState extends State<Home> {
+  BlackScholes blackScholes = BlackScholes();
+
   @override
   Widget build(BuildContext context) {
     return Container(
@@ -27,14 +30,20 @@ class _HomeState extends State<Home> {
             ),
           ),
           const SizedBox(height: 20),
-          const Row(
+          Row(
             children: [
               Expanded(
                   child: PriceBox(
-                      color: Colors.green, title: "CALL Value", value: 0)),
+                      color: Colors.green,
+                      title: "CALL Value",
+                      value: blackScholes.calculateOptionPrice(
+                          widget.options, "call"))),
               Expanded(
-                  child:
-                      PriceBox(color: Colors.red, title: "PUT Value", value: 0))
+                  child: PriceBox(
+                      color: Colors.red,
+                      title: "PUT Value",
+                      value: blackScholes.calculateOptionPrice(
+                          widget.options, "put")))
             ],
           ),
         ],
